@@ -1,15 +1,14 @@
-class FoodItemsDTO{
+class TerminalsDTO{
 
 
 	private String name;
 	private int id;
-    private double price;
 
 
 	
-	public FoodItemsDTO(){
+	public TerminalsDTO(){
 		
-		System.out.println("foodItems constuctor is creted");
+		System.out.println("TerminalsDTO constuctor is creted");
 	}
 
 	public int getId(){
@@ -24,13 +23,6 @@ class FoodItemsDTO{
 	}
 	public void setName(String name){
 		this.name=name;
-	}
-	
-	public double getPrice(){
-		return price;
-	}
-	public void setPrice(double price){
-		this.price=price;
 	}
 	
 	

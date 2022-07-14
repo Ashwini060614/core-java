@@ -3,7 +3,7 @@ class BooksDTO{
 
 	private String name;
 	private int id;
-    private String author;
+    private String address;
 	private long contactNo;
 
 	
@@ -26,11 +26,11 @@ class BooksDTO{
 		this.name=name;
 	}
 	
-	public String getAuthor(){
-		return author;
+	public String getAddress(){
+		return address;
 	}
-	public void setAuthor(String author ){
-		this.author=author;
+	public void setAuthor(String address ){
+		this.address=address;
 	}
 	public long getContactNo(){
 	  return contactNo;

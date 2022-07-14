@@ -23,15 +23,31 @@ class CustomerTester{
 		 der.setName(name);
 		 der.setPrice(price);
 		 der.setDate(date);
-		 
-		 
 			cus.creatOrder(der);
-
 		}
-		     cus.getOrderDetalies();
+			
+			cus.getOrderDetalies();
+			
+			System.out.println("The inter updatedName name");
+	  String updatedName=sc.next();
+       System.out.println("the inter existingId ");
+         int existingId= sc.nextInt();
+		 cus.updateTerminalsNameById(existingId,updatedName);
+		 cus.getOrderDetalies();
+		 
+		 
+       System.out.println("The inter existingName name");
+	  String existingName=sc.next();
+		 cus.deletTerminalsDetailsByName(existingName);
+		 cus.getOrderDetalies();
+		 
+			
+			
+		
+		}
+		     
 		//System.out.println(term.getId()+"    "+term.getName()+"  ");
 	}
 
 
 	
-}

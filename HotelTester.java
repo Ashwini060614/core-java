@@ -15,18 +15,32 @@ class HotelTester{
 		String name=sc.next();
          System.out.println("the inter foodItems price");
          double price = sc.nextDouble();
-		
+		 System.out.println("the inter foodItems contactNo");
+         long  contactNo = sc.nextLong();
+		 
     	FoodItemsDTO tem = new FoodItemsDTO();
 	     tem.setId(id);
 		 tem.setName(name);
 		 tem.setPrice(price);
-		 
+		 tem.setContactNo(contactNo);
 		 
 			tel.creatfoodItems(tem);
 
 		}
 		     tel.getFoodItemsDetalies();
 		//System.out.println(term.getId()+"    "+term.getName()+"  ");
+		System.out.println("Enter the existingId");
+		int existingId=sc.nextInt();
+		System.out.println("Enter the updateContactNo");
+		long updateContactNo=sc.nextInt();
+		tel.updateFoodItemContactNoByName(existingId,updateContactNo);
+		tel.getFoodItemsDetalies();
+		
+		
+		System.out.println("Enter the existingName");
+		String existingName=sc.next();
+		tel.deletTerminalesDetailsByName(existingName);
+		tel.getFoodItemsDetalies();
 	}
 
 

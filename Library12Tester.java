@@ -22,7 +22,7 @@ class Library12Tester{
 	     not.setId(id);
 		 not.setAuthor(author);
 		 not.setContactNo(contactNo);
-		 
+		 not.setName(name);
 		 
 			ary.creatbooks(not);
 			//System.out.println(term.getId()+"    "+term.getName()+"  ");
@@ -30,8 +30,23 @@ class Library12Tester{
 		}
 		     ary.getBooksDetalies();
 		//System.out.println(term.getId()+"    "+term.getName()+"  ");
+		System.out.println("enter the existingId ");
+	 int existingId=sc.nextInt();
+	 System.out.println("Enter the updatedName ");
+	  String updatedName=sc.next();
+	  ary.updateTerminalsNameById(existingId,updatedName);
+	  ary.getBooksDetalies();
+	  
+	  	 System.out.println("updateName is successfull update");
+		 System.out.println("Enter the existingName");
+		 String existingName=sc.next();
+		ary. deletTerminalesDetailsByName(existingName);
+		System.out.println("existingName is successfully exist");
+       ary.getBooksDetalies();
+	   }
+	   
+		  
 	}
 
 
 	
-}

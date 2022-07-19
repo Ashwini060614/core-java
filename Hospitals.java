@@ -34,7 +34,7 @@ import java.util.Arrays;
     
 	  
 for(int i=0;i<patis.length;i++){
-	System.out.println(patis[i].getName()+"    "+patis[i].getAddress()+"  "+patis[i].getContactNo()+"    "+patis[i].getId()+"   "+patis[i].getGender() );
+	System.out.println(patis[i]);
 } 
 	  
   }
@@ -57,6 +57,58 @@ for(int i=0;i<patis.length;i++){
 	    return isUpdatedAddress;
   }  
   
+
+	public String getPatientNameById(int id){
+		String patientName=null;
+		System.out.println("getPatientNameById() invoked");
+		
+		for(int i=0;i<patis.length;i++){
+			if(patis[i].getId()==id ){
+				patientName = patis[i].getName();
+				System.out.println("patientName");
+			
+			}
+			else {
+				System.out.println("Entered Id doesnot Exists");
+			}
+		}		
+		return patientName;
+	}
+	
+	public PatientDTO getpatientDetailsById(int id){
+		PatientDTO patientDetails = null;
+		System.out.println("getPatientDetails() invoked");
+		for(int i=0;i<patis.length;i++){
+			if(patis[i].getId()==id ){
+				patientDetails = patis[i];
+				System.out.println(patientDetails);
+			}
+			else {
+				System.out.println("Entered Id does not exists");
+			}
+		}
+		
+		return patientDetails;
+	}
+	
+	public boolean deletedPatientById(int id){
+		boolean deletedPatient = false;
+		System.out.println("deletedPatientById () created");
+		int i,j;
+		for(i=0,j=0;j<patis.length;j++){
+			if(patis[j].getId() !=id ){
+				patis[i++]=patis[j];
+				System.out.println("patient deleted successfully");
+				deletedPatient = true;
+			}
+			else {
+				System.out.println("Entered id does not exists");
+			}
+		}
+		patis = Arrays.copyOf(patis,i);
+		return deletedPatient;		
+		
+	}
    public boolean deletPatientDetailsByName(String name){
 	   
 	   System.out.println("creat the deletPatientDetailsByName() ");

@@ -1,4 +1,8 @@
 class PatientDTO{
+
+
+	
+	
 	private int id;
 	 private String name;
 	 private String address;
@@ -43,11 +47,17 @@ class PatientDTO{
 		  this.contactNo=contactNo;
 	  }
 	   public int getId(){
-		 
+		  
 		 return id;
 	 }
 	  public void setId(int id){
 		  
 		  this.id=id;
 	  }
+	  @Override
+	  public String toString(){
+		  
+		  return  "patient Name :"+this.name+", "+" Id :"+this.id+", "+"Address :"+this.address+", "+"Gender :"+this.gender+","+"ContacatNo:"+this.contactNo;
+	  }
 }
+

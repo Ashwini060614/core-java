@@ -1,81 +1,132 @@
-
 import java.util.Arrays;
- public class Airport{
 
-	TerminalsDTO[] dtos;
+class Airport {
+	
+	//Airport has many Terminals
+	TerminalsDTO dtos[];
+	
+	//instance variable
+	int index;
 	
 	public Airport(int size){
+		System.out.println("Welcome to KempeGowda International Airport");
 		dtos = new TerminalsDTO[size];
-		System.out.println("Airport constuctor is created");
 	}
-   int index;
-
-	public boolean creatTerminals(TerminalsDTO dtos){
-		System.out.println("Inside creat terminals");
-		boolean isAdded=false;
-		if(dtos !=null && dtos.getName() !=null){
-			this.dtos[index++]=dtos;
-			isAdded=true;
-			System.out.println("terminals are created successfully");
+	
+	public boolean createTerminals(TerminalsDTO dto) {
+		System.out.println("TerminalsDTO() invoked");
+		boolean isAdded = false;
+		if(dto!= null && dto.getName()!= null ){
+			this.dtos[index++] = dto;
+			isAdded = true;
+			System.out.println("Terminal added successfully");
 		}
 		else{
-			System.out.println("can  dont add terminals...");
+			System.out.println("Please provide correct details");
 		}
-		return isAdded;
-	
+		return isAdded;		
 	}
-	public void getTerminalsDetalies(){
-		System.out.println("Airport get the terminals detalies");
+	
+	public void getTerminalDetails(){
+		System.out.println("Inside getTerminalDetails()");
+		for(int i=0; i<dtos.length; i++){
+			System.out.println(dtos[i] );
+		}		
+	}
+	public boolean updateTypeById(int id,String type){
+		boolean updatedType=false;
+		System.out.println("updateTypeById() created");
+		for(int i=0;i<dtos.length;i++){
+			if(dtos[i].getId()==id ){
+				dtos[i].setType(type);
+				updatedType = true;
+			}
+			else {
+				System.out.println("Entered id does not exist");
+			}
+		}
+		return updatedType;		
+	}
+	public boolean updateTypeByName(String name, String type){
+		boolean updatedType = false;
+		System.out.println("updateTypeByName() created ");
+		for(int i=0;i<dtos.length;i++){
+			if(dtos[i].getName().equalsIgnoreCase(name) ){
+				dtos[i].setType(type);
+				updatedType = true;
+			}
+			else {
+				System.out.println("Entered name does not exist");
+			}
+		}
+		return updatedType;
+	}
+	
+	public boolean updateNameById(String name, int id){
+		boolean updatedName = false;
+		System.out.println("updateNameById() invoked");
+		for(int i=0;i<dtos.length;i++){
+			if(dtos[i].getId()==id ){
+				dtos[i].setName(name);
+				updatedName = true;
+			}
+			else {
+				System.out.println("Entered Id does not exist");
+			}
+			
+		}		
+		return updatedName;
+	}
+	
+	public TerminalsDTO getTerminalDetailsById(int id){
+		TerminalsDTO terminalDetails = null;
+		System.out.println("getTerminalDetailsById() invoked");
+		for(int i=0;i<dtos.length;i++){
+			if(dtos[i].getId()==id ){
+				terminalDetails = dtos[i];
+				System.out.println(terminalDetails);
+			}
+			else {
+				System.out.println("Entered id does not exist");
+			}
+		}
+		return terminalDetails;
+	}
+	
+	public boolean deleteTerminalsById(int id){
+		System.out.println("deleteTerminalsById() created");
+		boolean deleteTerminal=false;
+		int i,j;
+		for(i=0,j=0;j<dtos.length;j++){
+			if(dtos[j].getId() != id ){
+				dtos[i++] = dtos[j];
+				System.out.println("Terminals deleted successfully");
+				deleteTerminal = true;
+			}
+			else {
+				System.out.println("Entered id does not exist");
+			}
+		}
+		dtos = Arrays.copyOf(dtos,i);
+		return deleteTerminal;
+	}
+	public boolean deleteTerminalsByName(String name){
+		System.out.println("deleteTerminalsByName() created");
+		boolean deleteTerminals = false;
+		int i,j;
+		for( i=0,j=0; j<dtos.length;j++){
+			if(!dtos[j].getName().equals(name) ){
+				dtos[i++] = dtos[j];
+				System.out.println("Terminal deleted successfully");
+				deleteTerminals = true;
+			}
+			else {
+				System.out.println("Entered Name does not exist");
+			}
+		}
+		dtos = Arrays.copyOf(dtos,i);
+		return deleteTerminals;
 		
-		for(int i=0;i<dtos.length ;i++){
-			System.out.println(dtos[i].getId()+"  "+dtos[i].getName()+"   ");
-		}
 	}
 	
-	 public boolean updateTerminalsNameById(int id,String name){
-	  System.out.println("creat the updateTerminalsNameById()");
-	  boolean isUpdatedName=false;
-	  for(int i=0; i<dtos.length;i++){
-		  if(dtos[i].getId()==id){
-			  dtos[i].setName(name);
-			  isUpdatedName=true;
-			   
-		  }
-		  else{
-			  
-			  System.out.println("the terminals name is not upadate");
-		  }
-		 // return isUpdatedAddress;
-		  
-	  }
-	    return isUpdatedName;
-  }  
-  
-   public boolean deletTerminalsDetailsByName(String name){
-	   
-	   System.out.println("creat the deletterminals DetailsByName() ");
-	   boolean isdateContactNo=false;
-	   int i,j;
-	   for(i=0,j=0; j<dtos.length;j++){
-		   if(!dtos[j].getName().equals(name)){
-			   dtos[i++]=dtos[j];
-		// if(patis[i].getName()==name){
-			// patis[i].setContactNo(contactNo);
-		//patis[i]=null;}
-			 isdateContactNo=true;
-		   }	// System.out.println("the patient contactNo is delet");
-		//patis=Arrarys.copyof(patis,i);
-	   
-	   else{
-		        System.out.println("");
-	       }
-	   }
-	   
-	   dtos = Arrays.copyOf(dtos,i);
-	   
-	   
-	   // isdateContactNo=true;
-	   return isdateContactNo;
-	   }
- }
- 
+}	

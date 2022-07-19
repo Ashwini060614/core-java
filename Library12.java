@@ -28,11 +28,11 @@ public class Library12{
 		System.out.println("library get the books detalies");
 		
 		for(int i=0;i<note.length ;i++){
-			System.out.println(note[i].getId()+"  "+note[i].getName()+"   "+note[i].getAddress()+"    "+note[i].getContactNo()+"    ");
+			System.out.println(note[i]);
 		}
 	}
 	
-	   public boolean updateTerminalsNameById(int id,String name){
+	   public boolean updateBookssNameById(int id,String name){
 	System.out.println("Inside creat terminals");
 	boolean isUpdate=false;
 	for(int i=0; i<note.length;i++){
@@ -48,10 +48,25 @@ public class Library12{
 	}	
 		return isUpdate;	
 	}
-	
-	 public boolean deletTerminalesDetailsByName(String name){
+	   public boolean updateBooksContactNoById(int id,long contactNo){
+	System.out.println("Inside creat Books");
+	boolean isUpdate1=false;
+	for(int i=0; i<note.length;i++){
+		if(note[i].getId()==id){
+			note[i].setContactNo(contactNo);
+			isUpdate1=true;
+			
+		}
+		else{
+			System.out.println("can not update books");
+		}
+			
+	}	
+		return isUpdate1;	
+	}
+	 public boolean deletBooksDetailsByName(String name){
 	   
-	   System.out.println("creat the deletTerminalsDetailsByName() ");
+	   System.out.println("creat the deletBooksDetailsByName() ");
 	   boolean isdateContactNo=false;
 	   int i,j;
 	   for(i=0,j=0; j<note.length;j++){
@@ -68,8 +83,29 @@ public class Library12{
 	   note=Arrays.copyOf(note,i);
 	   return isdateContactNo ;
 	 }
+	  
+	   public boolean deletBooksDetailsById(int id){
+	   System.out.println("creat the delet books DetailsById() ");
+	   boolean isdateContactNo1=false;
 	   
+	   int newIndex,oldIndex;
+	   for( newIndex=0,oldIndex=0; oldIndex<note.length;oldIndex++){
+		   if(!(note[newIndex].getId()==id)){
+		   note[newIndex++]= note[oldIndex];
+			 isdateContactNo1=true;
+		   }	
+	   
+	   else{
+		        System.out.println("");
+	       }
+	   }
+	   
+	   note = Arrays.copyOf(note,newIndex);
+	   
+	   
+	   // isdateContactNo=true;
+	   return isdateContactNo1; 
 }
 
 	
-	  
+}

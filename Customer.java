@@ -1,75 +1,139 @@
 import java.util.Arrays;
-public class Customer{
 
-	OrderDTO[] der;
+class Customer {
+	
+	//Customer has many orders
+	OrderDTO dtos[];
+	
+	//instance variable
+	int index;
 	
 	public Customer(int size){
-		der = new OrderDTO[size];
-		System.out.println("customer constuctor is created");
+		System.out.println("Customer() created ");
+		dtos = new OrderDTO[size];
 	}
-   int index;
-
-	public boolean creatOrder(OrderDTO xyz){
-		System.out.println("Inside creat order");
-		boolean isAdded=false;
-		if(xyz!=null && xyz.getName() !=null){
-			der[index++]=xyz;
-			isAdded=true;
-			System.out.println("order are created successfully");
+	
+	public boolean orderToBePlaced(OrderDTO dto){
+		System.out.println("orderToBePlaced() invoked");
+		boolean order = false;		
+		if(dto!=null){
+			this.dtos[index++]=dto;
+			order = true;
+			System.out.println("Order details found");
 		}
 		else{
-			System.out.println("can  dont add order...");
+			System.out.println("Order details not matching");
 		}
-		return isAdded;
+		
+	return order;
+	}
 	
-	}
-	public void getOrderDetalies(){
-		System.out.println("hotel get the order detalies");
-		
-		for(int i=0;i<der.length ;i++){
-			System.out.println(der[i].getId()+"  "+der[i].getName()+"   "+der[i].getPrice()+"    "+der[i].getDate()+"    ");
+	public void getOrderDetails(){
+		System.out.println("getOrderDetails() invoked ");
+		for(int i=0; i<dtos.length;i++){
+			System.out.println(dtos[i]);
 		}
 	}
-	public boolean updateTerminalsNameById(int id,String name){
-	  System.out.println("creat the updateTerminalsNameById()");
-	  boolean isUpdatedName=false;
-	  for(int i=0; i<der.length;i++){
-		  if(der[i].getId()==id){
-			  der[i].setName(name);
-			  isUpdatedName=true;
-			   
-		  }
-		  else{
-			  
-			  System.out.println("the terminals name is not upadate");
-		  }
-		 // return isUpdatedAddress;
-		  
-	  }
-	    return isUpdatedName;
-  }  
-  
-   public boolean deletTerminalsDetailsByName(String name){
-	   
-	   System.out.println("creat the deletterminals DetailsByName() ");
-	   boolean isdateContactNo=false;
-	   int i,j;
-	   for(i=0,j=0; j<der.length;j++){
-		   if(!der[j].getName().equals(name)){
-			   der[i++]=der[j];
+	public boolean updatePriceById(int id, int price ){
+		boolean updatedPrice = false;
+		System.out.println("updatePriceBYId () created");
+		for(int i=0; i<dtos.length;i++){
+			if(dtos[i].getId()==id ){
+				dtos[i].setPrice(price);
+				updatedPrice = true;
+			}
+			else {
+				System.out.println("Entered id doesnot exists");
+			}			
+		}
+		return updatedPrice;
+	}
+		public boolean updatePriceByName( String orderName, int price ){
+		boolean updatedPrice = false;
+		System.out.println("updatePriceByName () created");
+		for(int i=0; i<dtos.length;i++){
+			if(dtos[i].getOrderName().equals(orderName) ){
+				dtos[i].setPrice(price);
+				
+			}
+			else {
+				System.out.println("Entered id doesnot exists");
+			}			
+		}
+		return updatedPrice;
+	}
+	
+	public String getOrderNameById(int id){
+		String orderedName=null;
+		System.out.println("getOrderNameById() invoked");
 		
-			 isdateContactNo=true;
-		   }	
-	   
-	   else{
-		        System.out.println("");
-	       }
-	   }
-	   
-	   der = Arrays.copyOf(der,i);
-	   
-	   
-	   // isdateContactNo=true;
-	   return isdateContactNo;
-	   }
+		for(int i=0;i<dtos.length;i++){
+			if(dtos[i].getId()==id ){
+				orderedName = dtos[i].getOrderName();
+				System.out.println("Order Name is :"+orderedName);
+			
+			}
+			else {
+				System.out.println("Entered Id doesnot Exists");
+			}
+		}		
+		return orderedName;
+	}
+	
+	public OrderDTO getOrderDetailsById(int id){
+		OrderDTO orderDetails = null;
+		System.out.println("getOrderDetails() invoked");
+		for(int i=0;i<dtos.length;i++){
+			if(dtos[i].getId()==id ){
+				orderDetails = dtos[i];
+				System.out.println(orderDetails);
+			}
+			else {
+				System.out.println("Entered Id does not exists");
+			}
+		}
+		
+		return orderDetails;
+	}
+	
+	public boolean deletedOrderById(int id){
+		boolean deletedOrder = false;
+		System.out.println("deletedOrderById () created");
+		int i,j;
+		for(i=0,j=0;j<dtos.length;j++){
+			if(dtos[j].getId() !=id ){
+				dtos[i++]=dtos[j];
+				System.out.println("Order deleted successfully");
+				deletedOrder = true;
+			}
+			else {
+				System.out.println("Entered id does not exists");
+			}
+		}
+		dtos = Arrays.copyOf(dtos,i);
+		return deletedOrder;		
+	}
+		public boolean deletedOrderByName(String name){
+		boolean deletedOrder = false;
+		System.out.println("deletedOrderByName () created");
+		int i,j;
+		for(i=0,j=0;j<dtos.length;j++){
+			if(!dtos[j].getOrderName().equals(name) ){
+				dtos[i++]=dtos[j];
+				System.out.println("Order deleted successfully");
+				deletedOrder = true;
+			}
+			else {
+				System.out.println("Entered id does not exists");
+			}
+		}
+		dtos = Arrays.copyOf(dtos,i);
+		return deletedOrder;		
+	}
+	
 }
+
+
+// to be updated get orderNames
+// getOrder Quantities;
+//get order id's

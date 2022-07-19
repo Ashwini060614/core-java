@@ -1,17 +1,23 @@
 class BooksDTO{
+	
+	
+  public BooksDTO(){
+		
+		System.out.println("BooksDTO constuctor is creted");
+	}
 
-
+  
+	@Override
+	public int hashCode(){
+		return this.id;
+	}
 	private String name;
 	private int id;
     private String address;
 	private long contactNo;
 
 	
-	public BooksDTO(){
-		
-		System.out.println("BooksDTO constuctor is creted");
-	}
-
+	
 	public int getId(){
 		return id;
 	}
@@ -38,6 +44,11 @@ class BooksDTO{
 	}
 	public void setContactNo(long contactNo){
 		this.contactNo=contactNo;
+	}
+	@Override
+	public String toString(){
+		
+		return"[BooksDTO: Id="+this.id+",Name="+this.name+"]";
 	}
 	
 	}

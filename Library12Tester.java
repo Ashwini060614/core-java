@@ -28,25 +28,56 @@ class Library12Tester{
 			//System.out.println(term.getId()+"    "+term.getName()+"  ");
 			//sc.getTerminalsDetalies();
 		}
-		     ary.getBooksDetalies();
-		//System.out.println(term.getId()+"    "+term.getName()+"  ");
-		System.out.println("enter the existingId ");
-	 int existingId=sc.nextInt();
-	 System.out.println("Enter the updatedName ");
-	  String updatedName=sc.next();
-	  ary.updateTerminalsNameById(existingId,updatedName);
-	  ary.getBooksDetalies();
-	  
-	  	 System.out.println("updateName is successfull update");
-		 System.out.println("Enter the existingName");
-		 String existingName=sc.next();
-		ary. deletTerminalesDetailsByName(existingName);
-		System.out.println("existingName is successfully exist");
-       ary.getBooksDetalies();
-	   }
+		String option=null;
+		do{
+			System.out.println("Enter 1 to fetch all the books");
+			System.out.println("Enter 2 to updateBooksNameById");
+			System.out.println("Enter 3 to updateBooksContactNoById");
+			System.out.println("Enter 4 to deleteBooksDetailsById");
+			System.out.println("Enter 5 to deleteBooksDetailsByName");;
+			
+						System.out.println("Enter the choise");
+						int choise=sc.nextInt();
+						switch(choise){
+							    case 1: ary.getBooksDetalies();
+							         break;
+								case 2: System.out.println("The inter updatedName name");
+	                                     String updatedName=sc.next();
+                                         System.out.println("the inter existingId ");
+                                         int existingId= sc.nextInt();
+		                                 ary.updateBookssNameById(existingId,updatedName);
+							              break;
+						
+							   case 3:  System.out.println("The inter updatedName1 name");
+	                                     long updatedContactNo=sc.nextLong();
+                                         System.out.println("the inter updatedContactNo ");
+                                         int existingId1= sc.nextInt();
+                                         ary.updateBooksContactNoById(existingId1,updatedContactNo);
+										 break;
+										 
+								case 4: System.out.println("the inter existingId2 ");
+                                        int existingId2= sc.nextInt();
+										ary.deletBooksDetailsById(existingId2);
+										break;
+										
+								case 5:  System.out.println("The inter existingName name");
+	                                      String existingName=sc.next();
+		                                  ary.deletBooksDetailsByName(existingName);
+		                                    break;
+										
+                            default: System.out.println("Given choise can not be deliverd");
+							           break;
+						}						
+			System.out.println("Do you want to continoue to enter Y/N ");
+				option=sc.next();
+		           }
+				   while(option.equals("Y"));
+}	 
+		
 	   
 		  
-	}
+	
 
 
+}
 	

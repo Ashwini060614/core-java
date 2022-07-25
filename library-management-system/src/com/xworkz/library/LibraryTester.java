@@ -1,12 +1,19 @@
-import java.util.Scanner; 
- 
-class Library12Tester{
-	public static void main(String a []){
+package com.xworkz.library;
+
+import java.util.Scanner;
+
+import com.xworkz.library.curd.Library;
+import com.xworkz.library.curd.impl.LibraryImpl;
+import com.xworkz.library.dto.BooksDTO;
+
+public class LibraryTester {
+
+public static void main(String a []){
 		
 		Scanner sc =  new Scanner(System.in);
 		System.out.println("the inter size of books are add");
 		int size = sc.nextInt();
-		Library12 ary = new Library12(size);
+		Library ary = new LibraryImpl(size);
 		
 		for(int i=0; i<size; i++){
 		System.out.println("the inter books id");
@@ -67,7 +74,8 @@ class Library12Tester{
 										
                             default: System.out.println("Given choise can not be deliverd");
 							           break;
-						}						
+						}	
+						sc.close();
 			System.out.println("Do you want to continoue to enter Y/N ");
 				option=sc.next();
 		           }
@@ -78,6 +86,4 @@ class Library12Tester{
 		  
 	
 
-
 }
-	

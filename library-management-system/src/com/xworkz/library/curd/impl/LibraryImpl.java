@@ -1,15 +1,20 @@
+package com.xworkz.library.curd.impl;
 
 import java.util.Arrays;
-public class Library12{
+
+import com.xworkz.library.curd.Library;
+import com.xworkz.library.dto.BooksDTO;
+
+public class LibraryImpl implements Library{
 
 	BooksDTO[] note;
-	
-	public Library12(int size){
+	int index;
+	public LibraryImpl(int size){
 		note = new BooksDTO[size];
 		System.out.println("books constuctor is created");
 	}
-   int index;
-
+   
+  @Override
 	public boolean creatbooks(BooksDTO not){
 		System.out.println("Inside creat books");
 		boolean isAdded=false;
@@ -24,6 +29,7 @@ public class Library12{
 		return isAdded;
 	
 	}
+  @Override
 	public void getBooksDetalies(){
 		System.out.println("library get the books detalies");
 		
@@ -31,7 +37,7 @@ public class Library12{
 			System.out.println(note[i]);
 		}
 	}
-	
+	  @Override
 	   public boolean updateBookssNameById(int id,String name){
 	System.out.println("Inside creat terminals");
 	boolean isUpdate=false;
@@ -48,6 +54,7 @@ public class Library12{
 	}	
 		return isUpdate;	
 	}
+	  @Override
 	   public boolean updateBooksContactNoById(int id,long contactNo){
 	System.out.println("Inside creat Books");
 	boolean isUpdate1=false;
@@ -64,6 +71,7 @@ public class Library12{
 	}	
 		return isUpdate1;	
 	}
+	  @Override
 	 public boolean deletBooksDetailsByName(String name){
 	   
 	   System.out.println("creat the deletBooksDetailsByName() ");
@@ -73,8 +81,8 @@ public class Library12{
 		   if(!note[j].getName().equals(name)){
 			   note[i++]=note[j];
 			 isdateContactNo=true;
-		   }	// System.out.println("the patient contactNo is delet");
-		//patis=Arrarys.copyof(patis,i);
+		   }	
+		
 	   
 	   else{
 		   System.out.println("");
@@ -83,7 +91,7 @@ public class Library12{
 	   note=Arrays.copyOf(note,i);
 	   return isdateContactNo ;
 	 }
-	  
+	  @Override
 	   public boolean deletBooksDetailsById(int id){
 	   System.out.println("creat the delet books DetailsById() ");
 	   boolean isdateContactNo1=false;
@@ -103,9 +111,9 @@ public class Library12{
 	   note = Arrays.copyOf(note,newIndex);
 	   
 	   
-	   // isdateContactNo=true;
+	  
 	   return isdateContactNo1; 
 }
 
-	
+
 }
